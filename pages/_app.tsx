@@ -1,0 +1,99 @@
+import { createGlobalStyle } from "styled-components";
+import { Provider, connect } from "react-redux";
+import { initStore } from "../redux/store";
+
+export default function App({ Component, pageProps }) {
+  return (
+    <Provider store={initStore}>
+      <GlobalStyle />
+      <Component {...pageProps} />
+    </Provider>
+  );
+}
+
+export const GlobalStyle = createGlobalStyle`
+  
+    @font-face {
+      font-family: 'Lcdphone';
+      src: url('/static/fonts/LCDPHONE.ttf') format('truetype');
+    }
+  
+    *,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+#root {
+  overflow: hidden;
+  height: 100vh;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  box-sizing: border-box;
+  font-size: 1.6rem;
+  color: #fff;
+  background-color: black;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+.main {
+  width: calc(100% - 40rem);
+  height: calc(100% - 10rem);
+  margin-left: 20rem;
+  margin-top: 10rem;
+  overflow-x: hidden;
+  background-color: rgba(255, 255, 255, 0.07);
+  padding: 5rem 1rem;
+  border-top-left-radius: 4rem;
+}
+
+h2 {
+  margin-bottom: 20px;
+  padding-left: 2rem;
+}
+
+.btn {
+  padding: 10px 30px;
+  border: none;
+  outline: none;
+  background-color: #40d59d;
+  color: #fff;
+  border-radius: 5px;
+  margin: 0 5px;
+  font-size: 14px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &--loadMore {
+    display: block;
+    margin: 1rem auto;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  &:active {
+    transform: translateY(0px);
+  }
+}
+  `;
